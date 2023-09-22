@@ -1,0 +1,79 @@
+CREATE DATABASE Comercializadora;
+USE Comercializadora;
+CREATE TABLE Clientes (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(50),
+    Apellido1 VARCHAR(50),
+    Apellido2 VARCHAR(50),
+    Ciudad VARCHAR(50),
+    Direccion VARCHAR(100),
+    Telefono VARCHAR(15),
+    FechaNacimiento DATE,
+    Edad INT
+);
+CREATE TABLE Agentes (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(50),
+    Apellido1 VARCHAR(50),
+    Apellido2 VARCHAR(50),
+    Ciudad VARCHAR(50),
+    Direccion VARCHAR(100),
+    Telefono VARCHAR(15),
+    Comision DECIMAL(5, 2)
+);
+CREATE TABLE Pedidos (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    ValorPedido DECIMAL(10, 2),
+    ClienteId INT,
+    AgenteId INT,
+    FechaPedido DATE,
+    FOREIGN KEY (ClienteId) REFERENCES Clientes(Id),
+    FOREIGN KEY (AgenteId) REFERENCES Agentes(Id)
+);
+
+INSERT INTO Clientes (Nombre, Apellido1, Apellido2, Ciudad, Direccion, Telefono, FechaNacimiento, Edad)
+VALUES
+    ('LUISA MARIA', 'SIERRA', 'VEGA', 'Ciudad1', 'Direccion1', '123456789', '2000-01-01', 23),
+    ('Cliente2', 'Apellido2', 'Apellido3', 'Ciudad2', 'Direccion2', '987654321', '1995-05-10', 28),
+    ('Cliente3', 'Apellido4', 'Apellido5', 'Ciudad3', 'Direccion3', '555555555', '1990-12-15', 33),
+    ('Cliente4', 'Apellido6', 'Apellido7', 'Ciudad4', 'Direccion4', '444444444', '1985-03-20', 38),
+    ('Cliente5', 'Apellido8', 'Apellido9', 'Ciudad5', 'Direccion5', '333333333', '1980-07-25', 43),
+    ('Cliente6', 'Apellido10', 'Apellido11', 'Ciudad6', 'Direccion6', '222222222', '1975-09-30', 48),
+    ('Cliente7', 'Apellido12', 'Apellido13', 'Ciudad7', 'Direccion7', '111111111', '1970-11-05', 53),
+    ('Cliente8', 'Apellido14', 'Apellido15', 'Ciudad8', 'Direccion8', '666666666', '1965-02-10', 58),
+    ('Cliente9', 'Apellido16', 'Apellido17', 'Ciudad9', 'Direccion9', '777777777', '1960-04-15', 63),
+    ('Cliente10', 'Apellido18', 'Apellido19', 'Ciudad10', 'Direccion10', '888888888', '1955-06-20', 68),
+    ('Cliente11', 'Apellido20', 'Apellido21', 'Ciudad11', 'Direccion11', '999999999', '1950-08-25', 73),
+    ('Cliente12', 'Apellido22', 'Apellido23', 'Ciudad12', 'Direccion12', '1010101010', '1945-10-30', 78);
+    
+    
+    INSERT INTO Agentes (Nombre, Apellido1, Apellido2, Ciudad, Direccion, Telefono, Comision)
+VALUES
+    ('MARIA', 'HERRERA', 'SOCARAS', 'CiudadA1', 'DireccionA1', '123123123', 0.10),
+    ('Agente2', 'ApellidoA2', 'ApellidoA3', 'CiudadA2', 'DireccionA2', '456456456', 0.15),
+    ('Agente3', 'ApellidoA4', 'ApellidoA5', 'CiudadA3', 'DireccionA3', '789789789', 0.10),
+    ('Agente4', 'ApellidoA6', 'ApellidoA7', 'CiudadA4', 'DireccionA4', '101010101', 0.08),
+    ('Agente5', 'ApellidoA8', 'ApellidoA9', 'CiudadA5', 'DireccionA5', '121212121', 0.05);
+
+
+INSERT INTO Pedidos (ValorPedido, ClienteId, AgenteId, FechaPedido)
+VALUES
+    (1000.00, 1, 1, '2023-01-15'),
+    (750.00, 2, 2, '2023-02-20'),
+    (1200.00, 3, 3, '2023-03-25'),
+    (500.00, 4, 4, '2023-04-30'),
+    (800.00, 5, 5, '2023-05-05'),
+    (950.00, 6, 1, '2023-06-10'),
+    (1100.00, 7, 2, '2023-07-15'),
+    (600.00, 8, 3, '2023-08-20'),
+    (1300.00, 9, 4, '2023-09-25'),
+    (700.00, 10, 5, '2023-10-30');
+
+SELECT Apellido1, Apellido2, Nombre FROM Clientes ORDER BY Apellido1, Apellido2, Nombre;
+
+SELECT * FROM Agentes;
+    
+    SELECT * FROM Pedidos;
+    
+    SELECT * FROM Pedidos ORDER BY FechaPedido DESC;
+    
